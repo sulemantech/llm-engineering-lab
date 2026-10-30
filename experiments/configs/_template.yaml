@@ -1,0 +1,21 @@
+# Copy to <stage>-<short-name>.yaml. Change ONE thing vs. the baseline per run.
+run_id: s4-gpt-baseline
+stage: 4
+seed: 1337
+data: data/tinyshakespeare.txt
+tokenizer: char
+model:
+  n_layer: 4
+  n_head: 4
+  d_model: 128
+  block_size: 128
+  dropout: 0.1
+train:
+  batch_size: 32
+  max_steps: 3000
+  lr: 3.0e-4
+  weight_decay: 0.1
+  warmup_steps: 100
+  grad_clip: 1.0
+  eval_interval: 250
+notes: ""
