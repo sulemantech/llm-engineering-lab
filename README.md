@@ -27,7 +27,7 @@ Test status works as a to-do list: **skipped** = not implemented yet, **failed**
 | `experiments/results/runs.jsonl` | One line per run (appended by `llmlab.utils.log_result`) |
 | `paper-notes/` | Paper notes and equation-to-code walkthroughs |
 | `architecture/` | Diagrams, ADRs, capacity estimates, risk register |
-| `notebooks/` | Kaggle/Colab GPU runners |
+| `notebooks/` | Kaggle GPU workflow for heavy runs (`gpu-runs.md`) |
 | `data/` | Datasets (git-ignored; see `data/README.md`) |
 
 ## Results
