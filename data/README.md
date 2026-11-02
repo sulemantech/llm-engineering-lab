@@ -5,6 +5,7 @@ Record provenance for every dataset you use: source, licence, date downloaded, p
 | Dataset | Stage | Source | Size |
 |---|---|---|---|
 | TinyShakespeare | 1–4 | https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt | ~1 MB |
+| Multi30k (de→en) | 3b | https://huggingface.co/datasets/bentrevett/multi30k | ~30k sentence pairs |
 | TinyStories | 5 | https://huggingface.co/datasets/roneneldan/TinyStories | ~2 GB (use a subset on CPU) |
 
 ```bash
