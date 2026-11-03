@@ -12,3 +12,5 @@ checkpoints/
 *.gguf
 wandb/
 .ipynb_checkpoints/
+
+scratch/

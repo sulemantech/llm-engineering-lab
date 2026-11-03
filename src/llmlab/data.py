@@ -11,4 +11,15 @@ def get_batch(
     Returns (x, y), both of shape (batch_size, block_size), dtype long, where
     y[b, t] is the token that follows x[b, t] in `data` (next-token targets).
     """
-    raise NotImplementedError
+
+    # Sample random starting indices for the windows
+    ix = torch.randint(0, len(data) - block_size, (batch_size,), generator=generator)
+
+    # Create input sequence
+    x = torch.stack([data[i : i + block_size] for i in ix])
+
+    # Create target sequence (next-token targets)
+    y = torch.stack([data[i + 1 : i + block_size + 1] for i in ix])
+
+    # return both x and y, both of shape (batch_size, block_size)
+    return x, y
