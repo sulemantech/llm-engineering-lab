@@ -63,23 +63,23 @@ How it works (see `notebooks/gpu-runs.md`): code on the laptop → tests green �
 ---
 
 ## Week 0: Setup (2 days)
-- [ ] `uv sync` works; `uv run pytest -m stage0` is green
-- [ ] Push the repo to GitHub; CI is green
-- [ ] Measure the CPU baseline: time a 1024×1024 matmul and record it in LOG.md as your reference speed
-- [ ] Install Ollama for Windows (needed in Weeks 9–10); `ollama run qwen2.5:0.5b` works
+- [x] `uv sync` works; `uv run pytest -m stage0` is green
+- [ ] Push the repo to GitHub; CI is green *(pushed; CI status not yet confirmed)*
+- [x] Measure the CPU baseline: time a 1024×1024 matmul and record it in LOG.md as your reference speed *(17.3 ms, ~124 GFLOP/s)*
+- [x] Install Ollama for Windows (needed in Weeks 9–10); `ollama run qwen2.5:0.5b` works
 - [ ] Kaggle account with **phone verified** (needed for GPU and internet); in a GPU T4 notebook, `torch.cuda.is_available()` is True
 - [ ] Smoke test: the Kaggle notebook clones this repo, installs it, and runs `pytest -m stage0` on the GPU
-- [ ] Download TinyShakespeare into `data/` (see `data/README.md`)
+- [x] Download TinyShakespeare into `data/` (see `data/README.md`)
 - [ ] Gate: predict matmul output shapes before running them; explain gradient vs. parameter and optimizer vs. loss
 
 **Ship:** green CI badge in the README.
 
 ## Week 1: Stage 1, LM fundamentals
-- [ ] D1 Read: what problem Transformers solved. RNN/LSTM process tokens one step at a time, so there is no parallelism over the sequence, long-range information must pass through every step, and gradients vanish. Write notes in `paper-notes/attention-is-all-you-need.md` § "Problem".
-- [ ] D1 `tokenizer/char.py`: CharTokenizer encode/decode
-- [ ] D2 `data.py`: `get_batch` producing (x, y) with shifted targets
-- [ ] D3 By hand, then verified in PyTorch: dot products, a matmul as many dot products, softmax, and cross-entropy for a 3-token vocab
-- [ ] D3 Embeddings: show that `one_hot(idx) @ W == nn.Embedding(idx)`. Explain why learned dense vectors beat raw ids or one-hot.
+- [x] D1 Read: what problem Transformers solved. RNN/LSTM process tokens one step at a time, so there is no parallelism over the sequence, long-range information must pass through every step, and gradients vanish. Write notes in `paper-notes/attention-is-all-you-need.md` § "Problem". *(Self-check done, 7/12. Still to do: the summary bullets and the Q4/Q6 retake.)*
+- [x] D1 `tokenizer/char.py`: CharTokenizer encode/decode
+- [x] D2 `data.py`: `get_batch` producing (x, y) with shifted targets
+- [x] D3 By hand, then verified in PyTorch: dot products, a matmul as many dot products, softmax, and cross-entropy for a 3-token vocab
+- [ ] D3 Embeddings: show that `one_hot(idx) @ W == nn.Embedding(idx)`. Explain why learned dense vectors beat raw ids or one-hot. *(Equality shown in `scratch/day3.py`; written explanation still to do.)*
 - [ ] D4 `bigram.py`: BigramLM with logits and loss, plus sampling
 - [ ] D5 Training loop with a train/val split, seed, and a logged result row
 - [ ] D6 *Break it on purpose:* wrong target shift and LR=10. Log the symptoms.
